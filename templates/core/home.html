@@ -1,0 +1,216 @@
+{% extends 'base.html' %}
+
+{% block title %}SheConnect AI - AI-Powered Mentorship & Mental Health Support{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container text-center">
+        <h1 class="display-4 mb-4">{{ app_name }}</h1>
+        <h2 class="h3 mb-4">{{ tagline }}</h2>
+        <p class="lead mb-5">{{ description }}</p>
+        
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <div class="text-center">
+                            <h3 class="text-white">{{ stats.mentors }}+</h3>
+                            <p class="text-white-50">Expert Mentors</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-center">
+                            <h3 class="text-white">{{ stats.mentees }}+</h3>
+                            <p class="text-white-50">Women Entrepreneurs</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-center">
+                            <h3 class="text-white">{{ stats.connections }}</h3>
+                            <p class="text-white-50">Successful Connections</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-center">
+                            <h3 class="text-white">{{ stats.success_stories }}</h3>
+                            <p class="text-white-50">Success Stories</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-5">
+            <a href="{% url 'mentors:list' %}" class="btn btn-light btn-lg me-3">
+                <i class="fas fa-users me-2"></i>Browse Mentors
+            </a>
+            <a href="{% url 'admin:login' %}" class="btn btn-outline-light btn-lg">
+                <i class="fas fa-sign-in-alt me-2"></i>Get Started
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <h2 class="text-white mb-4">How SheConnect AI Empowers You</h2>
+                <p class="text-white-50">Comprehensive support for women entrepreneurs in Sri Lanka</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Expert Mentorship</h4>
+                    <p>Connect with experienced mentors who understand your business challenges and can guide you through your entrepreneurial journey.</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h4>AI-Powered Matching</h4>
+                    <p>Our intelligent matching system connects you with mentors who best align with your business stage, industry, and goals.</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h4>Mental Health Support</h4>
+                    <p>Access AI-powered mental health support, daily check-ins, and local resources to maintain your well-being while building your business.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Mentors Section -->
+{% if featured_mentors %}
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <h2 class="text-dark mb-4">Featured Mentors</h2>
+                <p class="text-muted">Meet some of our experienced mentors ready to support your journey</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            {% for mentor in featured_mentors %}
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        {% if mentor.photo %}
+                            <img src="{{ mentor.photo.url }}" alt="{{ mentor.name }}" class="rounded-circle mb-3" width="100" height="100">
+                        {% else %}
+                            <div class="bg-secondary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 100px; height: 100px;">
+                                <i class="fas fa-user fa-2x text-white"></i>
+                            </div>
+                        {% endif %}
+                        
+                        <h5 class="card-title">{{ mentor.name }}</h5>
+                        <p class="card-text text-muted">{{ mentor.expertise }}</p>
+                        <p class="card-text small">{{ mentor.years_experience }} years experience</p>
+                        
+                        <span class="badge bg-success">{{ mentor.availability_status|title }}</span>
+                        
+                        <div class="mt-3">
+                            <a href="{% url 'mentors:detail' mentor.id %}" class="btn btn-outline-primary btn-sm">
+                                View Profile
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="{% url 'mentors:list' %}" class="btn btn-primary">
+                View All Mentors
+            </a>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Mental Health Resources Section -->
+{% if mental_health_resources %}
+<section class="py-5">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <h2 class="text-white mb-4">Mental Health Support</h2>
+                <p class="text-white-50">Your well-being matters. Access local mental health resources and AI-powered support.</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            {% for resource in mental_health_resources %}
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ resource.name }}</h5>
+                        <p class="card-text">{{ resource.description|truncatewords:20 }}</p>
+                        <span class="badge bg-info">{{ resource.category|title }}</span>
+                        
+                        {% if resource.location %}
+                        <p class="card-text small text-muted mt-2">
+                            <i class="fas fa-map-marker-alt me-1"></i>{{ resource.location }}
+                        </p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="{% url 'ai_support:resources' %}" class="btn btn-outline-light">
+                View All Resources
+            </a>
+            <a href="{% url 'ai_support:chat' %}" class="btn btn-light ms-2">
+                <i class="fas fa-comments me-2"></i>Start Chat
+            </a>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Call to Action -->
+<section class="py-5 bg-dark">
+    <div class="container text-center">
+        <h2 class="text-white mb-4">Ready to Start Your Journey?</h2>
+        <p class="text-white-50 mb-4">Join hundreds of women entrepreneurs who are already benefiting from our mentorship platform.</p>
+        
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <a href="{% url 'mentees:register' %}" class="btn btn-primary btn-lg w-100">
+                            <i class="fas fa-user-plus me-2"></i>Join as Mentee
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="{% url 'admin:login' %}" class="btn btn-outline-light btn-lg w-100">
+                            <i class="fas fa-sign-in-alt me-2"></i>Login
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
