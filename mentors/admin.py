@@ -4,7 +4,7 @@ from .models import Mentor
 
 @admin.register(Mentor)
 class MentorAdmin(admin.ModelAdmin):
-    list_display = ('name', 'expertise', 'years_experience', 'industry', 'availability_status', 'is_verified', 'is_active')
+    list_display = ('name', 'expertise', 'years_experience', 'industry', 'availability_status', 'average_rating', 'rating_count', 'is_verified', 'is_active')
     list_filter = ('availability_status', 'is_verified', 'is_active', 'industry', 'business_stage_expertise', 'created_at')
     search_fields = ('name', 'expertise', 'email', 'short_bio')
     ordering = ('name',)

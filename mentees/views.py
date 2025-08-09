@@ -1,17 +1,32 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Mentee, ConnectionRequest
+from .forms import MenteeRegistrationForm, MenteeOnboardingForm
+from django import forms
 
 
 @login_required
 def mentee_register(request):
     """Mentee registration and onboarding"""
+    try:
+        mentee = request.user.mentee_profile
+        return redirect('mentees:dashboard')
+    except Mentee.DoesNotExist:
+        mentee = None
+
     if request.method == 'POST':
-        # Handle registration form
-        pass
+        form = MenteeRegistrationForm(request.POST)
+        if form.is_valid():
+            mentee: Mentee = form.save(commit=False)
+            mentee.user = request.user
+            mentee.save()
+            return redirect('mentees:dashboard')
+    else:
+        form = MenteeRegistrationForm()
     
     context = {
         'title': 'Mentee Registration',
+        'form': form,
     }
     return render(request, 'mentees/register.html', context)
 
@@ -52,10 +67,37 @@ def mentee_profile(request):
     except Mentee.DoesNotExist:
         return redirect('mentees:register')
     
-    context = {
-        'mentee': mentee,
-    }
-    return render(request, 'mentees/profile.html', context)
+    class ProfileForm(MenteeRegistrationForm):
+        class Meta(MenteeRegistrationForm.Meta):
+            pass
+
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, instance=mentee)
+        if form.is_valid():
+            form.save()
+            return redirect('mentees:dashboard')
+    else:
+        form = ProfileForm(instance=mentee)
+
+    return render(request, 'mentees/profile.html', { 'form': form, 'mentee': mentee })
+
+
+@login_required
+def mentee_onboarding(request):
+    try:
+        mentee = request.user.mentee_profile
+    except Mentee.DoesNotExist:
+        return redirect('mentees:register')
+    if request.method == 'POST':
+        form = MenteeOnboardingForm(request.POST, instance=mentee)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.onboarding_complete = True
+            obj.save()
+            return redirect('mentees:dashboard')
+    else:
+        form = MenteeOnboardingForm(instance=mentee)
+    return render(request, 'mentees/onboarding.html', { 'form': form })
 
 
 @login_required

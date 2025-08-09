@@ -4,33 +4,189 @@
 
 {% block content %}
 <div class="container mt-5">
-    <div class="row">
+    <!-- Header Section -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="text-white mb-3">Our Expert Mentors</h1>
+            <p class="text-white-50">Connect with experienced mentors who can guide your entrepreneurial journey in Sri Lanka.</p>
+        </div>
+    </div>
+
+    <!-- Search and Filter Section -->
+    <div class="row mb-4">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h1 class="card-title">Our Mentors</h1>
-                    <p>Connect with experienced mentors who can guide your entrepreneurial journey.</p>
-                    
-                    {% if mentors %}
-                        <div class="row">
-                            {% for mentor in mentors %}
-                            <div class="col-md-4 mb-4">
-                                <div class="card">
-                                    <div class="card-body text-center">
-                                        <h5>{{ mentor.name }}</h5>
-                                        <p class="text-muted">{{ mentor.expertise }}</p>
-                                        <span class="badge bg-success">{{ mentor.availability_status|title }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                            {% endfor %}
+                    <form method="GET" class="row g-3">
+                        <!-- Search -->
+                        <div class="col-md-4">
+                            <label for="search" class="form-label">Search Mentors</label>
+                            <input type="text" class="form-control" id="search" name="search" 
+                                   value="{{ search_query }}" placeholder="Search by name, expertise, or industry...">
                         </div>
-                    {% else %}
-                        <p>No mentors available at the moment.</p>
-                    {% endif %}
+                        
+                        <!-- Industry Filter -->
+                        <div class="col-md-3">
+                            <label for="industry" class="form-label">Industry</label>
+                            <select class="form-select" id="industry" name="industry">
+                                <option value="">All Industries</option>
+                                {% for industry in industries %}
+                                    <option value="{{ industry }}" {% if industry == industry_filter %}selected{% endif %}>
+                                        {{ industry }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        
+                        <!-- Business Stage Filter -->
+                        <div class="col-md-3">
+                            <label for="business_stage" class="form-label">Business Stage</label>
+                            <select class="form-select" id="business_stage" name="business_stage">
+                                <option value="">All Stages</option>
+                                {% for value, label in business_stage_choices %}
+                                    <option value="{{ value }}" {% if value == business_stage_filter %}selected{% endif %}>
+                                        {{ label }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        
+                        <!-- Availability Filter -->
+                        <div class="col-md-2">
+                            <label for="availability" class="form-label">Availability</label>
+                            <select class="form-select" id="availability" name="availability">
+                                <option value="">All</option>
+                                {% for value, label in availability_choices %}
+                                    <option value="{{ value }}" {% if value == availability_filter %}selected{% endif %}>
+                                        {{ label }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-search me-2"></i>Search & Filter
+                            </button>
+                            <a href="{% url 'mentors:list' %}" class="btn btn-outline-secondary ms-2">
+                                <i class="fas fa-times me-2"></i>Clear Filters
+                            </a>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Results Section -->
+    <div class="row">
+        <div class="col-12">
+            {% if mentors %}
+                <div class="row">
+                    {% for mentor in mentors %}
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 mentor-card">
+                            <div class="card-body">
+                                <div class="text-center mb-3">
+                                    {% if mentor.photo %}
+                                        <img src="{{ mentor.photo.url }}" alt="{{ mentor.name }}" 
+                                             class="rounded-circle mentor-photo mb-3" style="width: 100px; height: 100px; object-fit: cover;">
+                                    {% else %}
+                                        <div class="rounded-circle bg-primary d-inline-flex align-items-center justify-content-center mb-3" 
+                                             style="width: 100px; height: 100px;">
+                                            <i class="fas fa-user text-white" style="font-size: 2rem;"></i>
+                                        </div>
+                                    {% endif %}
+                                    
+                                    <h5 class="card-title">{{ mentor.name }}</h5>
+                                    <p class="text-muted">{{ mentor.expertise }}</p>
+                                    <span class="badge bg-{% if mentor.availability_status == 'available' %}success{% elif mentor.availability_status == 'busy' %}warning{% else %}secondary{% endif %}">
+                                        {{ mentor.availability_status|title }}
+                                    </span>
+                                </div>
+                                
+                                <div class="mentor-details">
+                                    <p class="card-text"><strong>Experience:</strong> {{ mentor.years_experience }} years</p>
+                                    <p class="card-text"><strong>Industry:</strong> {{ mentor.industry }}</p>
+                                    <p class="card-text"><strong>Expertise:</strong> {{ mentor.business_stage_expertise|title }}</p>
+                                    <p class="card-text">{{ mentor.short_bio|truncatewords:20 }}</p>
+                                </div>
+                                
+                                <div class="text-center mt-3">
+                                    <a href="{% url 'mentors:detail' mentor.id %}" class="btn btn-primary btn-sm">
+                                        <i class="fas fa-eye me-1"></i>View Profile
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <!-- Results Summary -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            Found <strong>{{ mentors.paginator.count }}</strong> mentor{{ mentors.paginator.count|pluralize }} matching your criteria. Page {{ mentors.number }} of {{ mentors.paginator.num_pages }}.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pagination -->
+                <nav aria-label="Mentor list pagination" class="mt-2">
+                    <ul class="pagination justify-content-center">
+                        {% if mentors.has_previous %}
+                            <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
+                            <li class="page-item"><a class="page-link" href="?page={{ mentors.previous_page_number }}">Previous</a></li>
+                        {% else %}
+                            <li class="page-item disabled"><span class="page-link">First</span></li>
+                            <li class="page-item disabled"><span class="page-link">Previous</span></li>
+                        {% endif %}
+                        <li class="page-item active"><span class="page-link">{{ mentors.number }}</span></li>
+                        {% if mentors.has_next %}
+                            <li class="page-item"><a class="page-link" href="?page={{ mentors.next_page_number }}">Next</a></li>
+                            <li class="page-item"><a class="page-link" href="?page={{ mentors.paginator.num_pages }}">Last</a></li>
+                        {% else %}
+                            <li class="page-item disabled"><span class="page-link">Next</span></li>
+                            <li class="page-item disabled"><span class="page-link">Last</span></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            {% else %}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-search fa-3x text-muted mb-3"></i>
+                                <h4>No mentors found</h4>
+                                <p class="text-muted">Try adjusting your search criteria or check back later.</p>
+                                <a href="{% url 'mentors:list' %}" class="btn btn-primary">
+                                    <i class="fas fa-undo me-2"></i>Clear All Filters
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
 </div>
+
+<style>
+.mentor-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mentor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.mentor-photo {
+    border: 3px solid #007bff;
+}
+</style>
 {% endblock %}

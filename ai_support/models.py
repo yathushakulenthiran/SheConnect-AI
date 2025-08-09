@@ -1,11 +1,11 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 from django.utils import timezone
 
 
 class MentalHealthSession(models.Model):
     """Mental health support sessions with AI chatbot"""
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='mental_health_sessions')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='mental_health_sessions')
     session_type = models.CharField(
         max_length=20,
         choices=[

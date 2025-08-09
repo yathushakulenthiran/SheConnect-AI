@@ -1,16 +1,17 @@
 {% extends "base.html" %}
-{% block title %}Profile{% endblock %}
+{% block title %}Sign Up{% endblock %}
 {% block content %}
 <div class="container mt-5">
   <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-md-6">
       <div class="card">
         <div class="card-body">
-          <h3 class="mb-3">Update your profile</h3>
+          <h3 class="mb-3">Create your account</h3>
           <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary">Sign up</button>
+            <a class="btn btn-outline-secondary ms-2" href="/accounts/google/login/">Continue with Google</a>
           </form>
         </div>
       </div>
@@ -18,3 +19,5 @@
   </div>
 </div>
 {% endblock %}
+
+

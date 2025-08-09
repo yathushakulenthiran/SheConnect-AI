@@ -8,3 +8,4 @@ urlpatterns = [
     path('resources/', views.mental_health_resources, name='resources'),
     path('matching/', views.ai_matching, name='matching'),
 ]
+

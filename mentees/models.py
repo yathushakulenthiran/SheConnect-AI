@@ -1,11 +1,11 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.conf import settings
 from django.utils import timezone
 
 
 class Mentee(models.Model):
     """Mentee profile for the mentorship platform"""
-    user = models.OneToOneField('auth.User', on_delete=models.CASCADE, related_name='mentee_profile')
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='mentee_profile')
     
     # Business Information
     business_stage = models.CharField(
@@ -28,6 +28,14 @@ class Mentee(models.Model):
     phone = models.CharField(max_length=20, blank=True)
     location = models.CharField(max_length=100, blank=True)
     linkedin_profile = models.URLField(blank=True)
+    
+    # Onboarding fields
+    onboarding_complete = models.BooleanField(default=False)
+    years_in_business = models.IntegerField(blank=True, null=True)
+    team_size = models.IntegerField(blank=True, null=True)
+    revenue_range = models.CharField(max_length=50, blank=True)
+    preferred_meeting_mode = models.CharField(max_length=20, blank=True)
+    languages = models.CharField(max_length=200, blank=True)
     
     # Profile Status
     is_active = models.BooleanField(default=True)

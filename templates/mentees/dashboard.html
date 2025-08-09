@@ -1,1 +1,58 @@
-{% extends "base.html" %}{% block title %}Dashboard{% endblock %}{% block content %}<div class="container mt-5"><div class="card"><div class="card-body"><h1>Mentee Dashboard</h1><p>Dashboard coming soon...</p></div></div></div>{% endblock %}
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12 mb-3">
+      <h2 class="text-white">Welcome, {{ request.user.username }}!</h2>
+      {% if mentee.onboarding_complete %}
+        <div class="alert alert-success">Onboarding complete. You're ready to find a mentor.</div>
+      {% else %}
+        <div class="alert alert-warning">Please complete your <a href="{% url 'mentees:onboarding' %}">onboarding questionnaire</a>.</div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Pending Connections</h5>
+          {% if pending_connections %}
+            <ul class="list-group list-group-flush">
+              {% for c in pending_connections %}
+                <li class="list-group-item">{{ c.mentor.name }} — <span class="badge bg-secondary">Pending</span></li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <p class="text-muted mb-0">No pending requests.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mb-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Accepted Connections</h5>
+          {% if accepted_connections %}
+            <ul class="list-group list-group-flush">
+              {% for c in accepted_connections %}
+                <li class="list-group-item">{{ c.mentor.name }} — <span class="badge bg-success">Accepted</span></li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <p class="text-muted mb-0">No accepted connections yet.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-12 text-center">
+      <a href="{% url 'mentors:list' %}" class="btn btn-primary me-2"><i class="fas fa-search me-1"></i>Browse Mentors</a>
+      <a href="{% url 'mentees:profile' %}" class="btn btn-outline-light"><i class="fas fa-user-cog me-1"></i>Update Profile</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

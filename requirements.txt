@@ -6,3 +6,7 @@ PyMySQL==1.1.1
 setuptools==80.9.0
 sqlparse==0.5.3
 wheel==0.45.1
+django-allauth==65.3.0
+requests==2.32.3
+PyJWT==2.9.0
+cryptography==43.0.1

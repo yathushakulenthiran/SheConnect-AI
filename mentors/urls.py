@@ -7,3 +7,4 @@ urlpatterns = [
     path('', views.mentor_list, name='list'),
     path('<int:mentor_id>/', views.mentor_detail, name='detail'),
 ]
+
