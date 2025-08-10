@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from mentors.models import Mentor
 from mentees.models import Mentee
-from ai_support.models import MentalHealthResource
+
 
 
 def home(request):
@@ -14,15 +14,14 @@ def home(request):
         availability_status='available'
     )[:6]
     
-    # Get mental health resources
-    mental_health_resources = MentalHealthResource.objects.filter(is_active=True)[:3]
+
     
     context = {
         'app_name': 'SheConnect AI',
         'tagline': 'AI-Powered Mentorship & Mental Health Support for Women Entrepreneurs',
         'description': 'Connect with experienced mentors, get AI-powered business guidance, and access mental health support designed for women entrepreneurs in Sri Lanka.',
         'featured_mentors': featured_mentors,
-        'mental_health_resources': mental_health_resources,
+
         'stats': {
             'mentors': Mentor.objects.filter(is_active=True).count(),
             'mentees': Mentee.objects.filter(is_active=True).count(),

@@ -1,0 +1,381 @@
+{% extends "base.html" %}
+
+{% block title %}Entrepreneur Mood Analytics - SheConnect AI{% endblock %}
+
+{% block extra_css %}
+<style>
+    .analytics-card {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        border: none;
+        transition: transform 0.2s ease;
+    }
+    
+    .analytics-card:hover {
+        transform: translateY(-2px);
+    }
+    
+    .stats-number {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    
+    .stats-label {
+        font-size: 0.9rem;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    .mood-chart {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 15px;
+        padding: 20px;
+        color: white;
+        margin-bottom: 20px;
+    }
+    
+    .trend-indicator {
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        display: inline-block;
+    }
+    
+    .trend-improving {
+        background: #d4edda;
+        color: #155724;
+    }
+    
+    .trend-declining {
+        background: #f8d7da;
+        color: #721c24;
+    }
+    
+    .trend-stable {
+        background: #d1ecf1;
+        color: #0c5460;
+    }
+    
+    .session-item {
+        border-left: 4px solid #667eea;
+        padding: 15px;
+        margin-bottom: 15px;
+        background: #f8f9fa;
+        border-radius: 0 10px 10px 0;
+    }
+    
+    .mood-bar {
+        height: 8px;
+        border-radius: 4px;
+        background: #e9ecef;
+        overflow: hidden;
+        margin: 5px 0;
+    }
+    
+    .mood-fill {
+        height: 100%;
+        border-radius: 4px;
+        transition: width 0.3s ease;
+    }
+    
+    .mood-fill.high { background: #28a745; }
+    .mood-fill.medium { background: #ffc107; }
+    .mood-fill.low { background: #dc3545; }
+    
+    .insight-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 15px;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .insight-icon {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <!-- Header -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h2><i class="fas fa-chart-line me-2"></i>Entrepreneur Mood Analytics</h2>
+                    <p class="text-muted mb-0">Track how your business journey affects your mental well-being</p>
+                </div>
+                <div>
+                    <a href="{% url 'ai_support:chat' %}" class="btn btn-primary">
+                        <i class="fas fa-comments me-2"></i>Start New Chat
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Key Statistics -->
+    <div class="row mb-4">
+        <div class="col-md-3 mb-3">
+            <div class="card analytics-card text-center">
+                <div class="card-body">
+                    <div class="stats-number text-primary">{{ avg_mood }}</div>
+                    <div class="stats-label">Average Mood</div>
+                    <small class="text-muted">out of 10</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card analytics-card text-center">
+                <div class="card-body">
+                    <div class="stats-number text-warning">{{ avg_stress }}</div>
+                    <div class="stats-label">Average Stress</div>
+                    <small class="text-muted">out of 10</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card analytics-card text-center">
+                <div class="card-body">
+                    <div class="stats-number text-success">{{ total_sessions }}</div>
+                    <div class="stats-label">Total Sessions</div>
+                    <small class="text-muted">chat sessions</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card analytics-card text-center">
+                <div class="card-body">
+                    <div class="stats-number text-info">{{ mood_trends.sessions_count }}</div>
+                    <div class="stats-label">Recent Sessions</div>
+                    <small class="text-muted">last 7 days</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mood Trends -->
+    <div class="row mb-4">
+        <div class="col-lg-8 mb-3">
+            <div class="card analytics-card">
+                <div class="card-header bg-transparent">
+                    <h5 class="mb-0"><i class="fas fa-chart-area me-2"></i>Mood & Stress Trends</h5>
+                </div>
+                <div class="card-body">
+                    {% if dates %}
+                        <canvas id="moodChart" width="400" height="200"></canvas>
+                    {% else %}
+                        <div class="text-center py-5">
+                            <i class="fas fa-chart-line fa-3x text-muted mb-3"></i>
+                            <h5>No data yet</h5>
+                            <p class="text-muted">Start chatting to see your mood trends</p>
+                            <a href="{% url 'ai_support:chat' %}" class="btn btn-primary">
+                                <i class="fas fa-comments me-2"></i>Start Chatting
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mb-3">
+            <div class="card analytics-card">
+                <div class="card-header bg-transparent">
+                    <h5 class="mb-0"><i class="fas fa-trending-up me-2"></i>Trend Analysis</h5>
+                </div>
+                <div class="card-body">
+                    {% if mood_trends.sessions_count > 0 %}
+                        <div class="mb-3">
+                            <h6>Overall Trend</h6>
+                            <span class="trend-indicator trend-{{ mood_trends.trend }}">
+                                {% if mood_trends.trend == 'improving' %}↗ Improving
+                                {% elif mood_trends.trend == 'declining' %}↘ Declining
+                                {% else %}→ Stable{% endif %}
+                            </span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <h6>Recent Mood</h6>
+                            <div class="mood-bar">
+                                <div class="mood-fill {% if mood_trends.recent_mood >= 7 %}high{% elif mood_trends.recent_mood >= 4 %}medium{% else %}low{% endif %}" 
+                                     style="width: {{ mood_trends.recent_mood|floatformat:0 }}0%"></div>
+                            </div>
+                            <small class="text-muted">{{ mood_trends.recent_mood }}/10</small>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <h6>Session Frequency</h6>
+                            <p class="mb-1">
+                                {% if mood_trends.sessions_count >= 5 %}
+                                    <i class="fas fa-check-circle text-success me-1"></i>Very Active
+                                {% elif mood_trends.sessions_count >= 3 %}
+                                    <i class="fas fa-clock text-warning me-1"></i>Moderate
+                                {% else %}
+                                    <i class="fas fa-exclamation-circle text-info me-1"></i>Getting Started
+                                {% endif %}
+                            </p>
+                            <small class="text-muted">{{ mood_trends.sessions_count }} sessions this week</small>
+                        </div>
+                    {% else %}
+                        <div class="text-center py-4">
+                            <i class="fas fa-chart-bar fa-2x text-muted mb-3"></i>
+                            <p class="text-muted">Start tracking your mood to see trends</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Insights -->
+    {% if mood_trends.sessions_count > 0 %}
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="insight-card">
+                <div class="row align-items-center">
+                    <div class="col-md-2 text-center">
+                        <div class="insight-icon">
+                            {% if mood_trends.trend == 'improving' %}
+                                <i class="fas fa-arrow-up"></i>
+                            {% elif mood_trends.trend == 'declining' %}
+                                <i class="fas fa-arrow-down"></i>
+                            {% else %}
+                                <i class="fas fa-minus"></i>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <h5>Your Mental Health Insight</h5>
+                        {% if mood_trends.trend == 'improving' %}
+                            <p class="mb-0">Great news! Your mood has been improving over the past week. Keep up the positive momentum and continue practicing self-care.</p>
+                        {% elif mood_trends.trend == 'declining' %}
+                            <p class="mb-0">I notice your mood has been declining. Remember, it's okay to not be okay. Consider reaching out to a mental health professional for support.</p>
+                        {% else %}
+                            <p class="mb-0">Your mood has been relatively stable. Consistency is good, but don't hesitate to seek support if you need it.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Recent Sessions -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card analytics-card">
+                <div class="card-header bg-transparent">
+                    <h5 class="mb-0"><i class="fas fa-history me-2"></i>Recent Sessions</h5>
+                </div>
+                <div class="card-body">
+                    {% if sessions %}
+                        {% for session in sessions %}
+                        <div class="session-item">
+                            <div class="row align-items-center">
+                                <div class="col-md-3">
+                                    <strong>{{ session.created_at|date:"M d, Y" }}</strong>
+                                    <br>
+                                    <small class="text-muted">{{ session.created_at|time:"H:i" }}</small>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="d-flex align-items-center">
+                                        <span class="me-2">Mood:</span>
+                                        <div class="mood-bar flex-grow-1">
+                                            <div class="mood-fill {% if session.mood_rating >= 7 %}high{% elif session.mood_rating >= 4 %}medium{% else %}low{% endif %}" 
+                                                 style="width: {{ session.mood_rating|floatformat:0 }}0%"></div>
+                                        </div>
+                                        <span class="ms-2">{{ session.mood_rating }}/10</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="d-flex align-items-center">
+                                        <span class="me-2">Stress:</span>
+                                        <div class="mood-bar flex-grow-1">
+                                            <div class="mood-fill {% if session.stress_level >= 7 %}low{% elif session.stress_level >= 4 %}medium{% else %}high{% endif %}" 
+                                                 style="width: {{ session.stress_level|floatformat:0 }}0%"></div>
+                                        </div>
+                                        <span class="ms-2">{{ session.stress_level }}/10</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 text-end">
+                                    <span class="badge bg-primary">{{ session.session_type|title }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="text-center py-5">
+                            <i class="fas fa-comments fa-3x text-muted mb-3"></i>
+                            <h5>No sessions yet</h5>
+                            <p class="text-muted">Start your first mental health chat session</p>
+                            <a href="{% url 'ai_support:chat' %}" class="btn btn-primary">
+                                <i class="fas fa-comments me-2"></i>Start Chatting
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    {% if dates %}
+    // Mood Chart
+    const ctx = document.getElementById('moodChart').getContext('2d');
+    const moodChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: {{ dates|safe }},
+            datasets: [{
+                label: 'Mood Rating',
+                data: {{ mood_data|safe }},
+                borderColor: '#667eea',
+                backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                tension: 0.4,
+                fill: true
+            }, {
+                label: 'Stress Level',
+                data: {{ stress_data|safe }},
+                borderColor: '#ffc107',
+                backgroundColor: 'rgba(255, 193, 7, 0.1)',
+                tension: 0.4,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Your Mood & Stress Over Time'
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 10,
+                    ticks: {
+                        stepSize: 2
+                    }
+                }
+            }
+        }
+    });
+    {% endif %}
+});
+</script>
+{% endblock %}

@@ -89,7 +89,7 @@
                         <i class="fas fa-heart"></i>
                     </div>
                     <h4>Mental Health Support</h4>
-                    <p>Access AI-powered mental health support, daily check-ins, and local resources to maintain your well-being while building your business.</p>
+                    <p>Access AI-powered mental health support and daily check-ins to maintain your well-being while building your business.</p>
                 </div>
             </div>
         </div>
@@ -146,48 +146,26 @@
 </section>
 {% endif %}
 
-<!-- Mental Health Resources Section -->
-{% if mental_health_resources %}
+<!-- Mental Health Support Section -->
 <section class="py-5">
     <div class="container">
         <div class="row text-center mb-5">
             <div class="col-12">
                 <h2 class="text-white mb-4">Mental Health Support</h2>
-                <p class="text-white-50">Your well-being matters. Access local mental health resources and AI-powered support.</p>
+                <p class="text-white-50">Your well-being matters. Access AI-powered mental health support and daily check-ins.</p>
             </div>
-        </div>
-        
-        <div class="row g-4">
-            {% for resource in mental_health_resources %}
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ resource.name }}</h5>
-                        <p class="card-text">{{ resource.description|truncatewords:20 }}</p>
-                        <span class="badge bg-info">{{ resource.category|title }}</span>
-                        
-                        {% if resource.location %}
-                        <p class="card-text small text-muted mt-2">
-                            <i class="fas fa-map-marker-alt me-1"></i>{{ resource.location }}
-                        </p>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
         </div>
         
         <div class="text-center mt-4">
-            <a href="{% url 'ai_support:resources' %}" class="btn btn-outline-light">
-                View All Resources
+            <a href="{% url 'ai_support:chat' %}" class="btn btn-outline-light">
+                <i class="fas fa-comments me-2"></i>Start Mental Health Chat
             </a>
-            <a href="{% url 'ai_support:chat' %}" class="btn btn-light ms-2">
-                <i class="fas fa-comments me-2"></i>Start Chat
+            <a href="{% url 'ai_support:mood_analytics' %}" class="btn btn-light ms-2">
+                <i class="fas fa-chart-line me-2"></i>Mood Analytics
             </a>
         </div>
     </div>
 </section>
-{% endif %}
 
 <!-- Call to Action -->
 <section class="py-5 bg-dark">
