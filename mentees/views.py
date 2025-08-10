@@ -1,7 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.http import JsonResponse
 from .models import Mentee, ConnectionRequest
 from .forms import MenteeRegistrationForm, MenteeOnboardingForm
+from mentors.models import Mentor
 from django import forms
 
 
@@ -108,9 +111,88 @@ def connection_requests(request):
     except Mentee.DoesNotExist:
         return redirect('mentees:register')
     
-    connections = ConnectionRequest.objects.filter(mentee=mentee)
+    # Get all connection types
+    pending_connections = ConnectionRequest.objects.filter(
+        mentee=mentee, 
+        status='pending'
+    )
+    
+    accepted_connections = ConnectionRequest.objects.filter(
+        mentee=mentee, 
+        status='accepted'
+    )
+    
+    rejected_connections = ConnectionRequest.objects.filter(
+        mentee=mentee, 
+        status='rejected'
+    )
     
     context = {
-        'connections': connections,
+        'pending_connections': pending_connections,
+        'accepted_connections': accepted_connections,
+        'rejected_connections': rejected_connections,
     }
     return render(request, 'mentees/connections.html', context)
+
+
+@login_required
+def send_connection_request(request, mentor_id):
+    """Send a connection request to a mentor"""
+    try:
+        mentee = request.user.mentee_profile
+    except Mentee.DoesNotExist:
+        return redirect('mentees:register')
+    
+    mentor = get_object_or_404(Mentor, id=mentor_id, is_active=True)
+    
+    # Check if connection already exists
+    existing_connection = ConnectionRequest.objects.filter(
+        mentee=mentee, 
+        mentor=mentor
+    ).first()
+    
+    if existing_connection:
+        if existing_connection.status == 'pending':
+            messages.warning(request, 'Connection request already pending.')
+        elif existing_connection.status == 'accepted':
+            messages.info(request, 'You are already connected with this mentor.')
+        elif existing_connection.status == 'rejected':
+            messages.warning(request, 'Connection was previously rejected.')
+        return redirect('mentors:detail', mentor_id=mentor_id)
+    
+    if request.method == 'POST':
+        message = request.POST.get('message', '')
+        
+        # Create connection request
+        connection = ConnectionRequest.objects.create(
+            mentee=mentee,
+            mentor=mentor,
+            message=message
+        )
+        
+        messages.success(request, f'Connection request sent to {mentor.name}!')
+        return redirect('mentees:connections')
+    
+    context = {
+        'mentor': mentor,
+        'mentee': mentee,
+    }
+    return render(request, 'mentees/send_connection.html', context)
+
+@login_required
+def cancel_connection_request(request, connection_id):
+    """Cancel a pending connection request"""
+    try:
+        mentee = request.user.mentee_profile
+    except Mentee.DoesNotExist:
+        return redirect('mentees:register')
+    
+    connection = get_object_or_404(ConnectionRequest, id=connection_id, mentee=mentee)
+    
+    if connection.status == 'pending':
+        connection.delete()
+        messages.success(request, 'Connection request cancelled.')
+    else:
+        messages.warning(request, 'Cannot cancel non-pending requests.')
+    
+    return redirect('mentees:connections')

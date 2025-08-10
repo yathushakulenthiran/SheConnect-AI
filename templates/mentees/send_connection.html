@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Connect with {{ mentor.name }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mb-0">
+            <i class="fas fa-handshake me-2"></i>
+            Connect with {{ mentor.name }}
+          </h4>
+        </div>
+        <div class="card-body">
+          <div class="row mb-4">
+            <div class="col-md-3 text-center">
+              {% if mentor.photo %}
+                <img src="{{ mentor.photo.url }}" alt="{{ mentor.name }}" class="img-thumbnail rounded-circle" style="width:100px;height:100px;object-fit:cover;">
+              {% else %}
+                <div class="rounded-circle bg-primary d-inline-flex align-items-center justify-content-center" style="width:100px;height:100px;">
+                  <i class="fas fa-user text-white" style="font-size:2rem;"></i>
+                </div>
+              {% endif %}
+            </div>
+            <div class="col-md-9">
+              <h5>{{ mentor.name }}</h5>
+              <p class="text-muted mb-1">{{ mentor.expertise }}</p>
+              <p class="text-muted mb-1">{{ mentor.industry }} • {{ mentor.years_experience }} years experience</p>
+              <p class="text-muted mb-0">{{ mentor.short_bio|truncatewords:20 }}</p>
+            </div>
+          </div>
+          
+          <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="message" class="form-label">Message to {{ mentor.name }} (Optional)</label>
+              <textarea 
+                class="form-control" 
+                id="message" 
+                name="message" 
+                rows="4" 
+                placeholder="Introduce yourself and explain why you'd like to connect with this mentor..."
+              ></textarea>
+              <div class="form-text">
+                Tell the mentor about your business goals and what you hope to learn from them.
+              </div>
+            </div>
+            
+            <div class="d-flex justify-content-between">
+              <a href="{% url 'mentors:detail' mentor.id %}" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left me-1"></i>Back to Profile
+              </a>
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-paper-plane me-1"></i>Send Connection Request
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

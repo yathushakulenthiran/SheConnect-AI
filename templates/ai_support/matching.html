@@ -1,1 +1,39 @@
-{% extends "base.html" %}{% block title %}AI Matching{% endblock %}{% block content %}<div class="container mt-5"><div class="card"><div class="card-body"><h1>AI Mentor Matching</h1><p>AI-powered mentor matching coming soon...</p></div></div></div>{% endblock %}
+{% extends "base.html" %}
+
+{% block title %}AI Mentor Matching{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row mb-3">
+    <div class="col-12">
+      <h3 class="text-white">Top Recommendations</h3>
+      {% if not mentee %}
+        <div class="alert alert-warning">Please complete registration to get recommendations.</div>
+      {% endif %}
+    </div>
+  </div>
+  <div class="row">
+    {% if results %}
+      {% for mentor, score, reasoning in results %}
+      <div class="col-md-4 mb-3">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">{{ mentor.name }}</h5>
+            <p class="mb-1"><strong>Score:</strong> {{ score }}/100</p>
+            <p class="mb-1"><strong>Expertise:</strong> {{ mentor.expertise }}</p>
+            <p class="text-muted small">{{ reasoning }}</p>
+            <a href="{% url 'mentors:detail' mentor.id %}" class="btn btn-primary btn-sm">View</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    {% else %}
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">No recommendations yet.</div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

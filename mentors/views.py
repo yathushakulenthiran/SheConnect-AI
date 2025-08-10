@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 from .models import Mentor
 from django.core.paginator import Paginator
+from mentees.models import ConnectionRequest
 
 
 def mentor_list(request):
@@ -59,7 +60,22 @@ def mentor_detail(request, mentor_id):
     """Individual mentor profile"""
     mentor = get_object_or_404(Mentor, id=mentor_id, is_active=True)
     
+    # Check connection status for authenticated mentees
+    connection_status = None
+    if request.user.is_authenticated:
+        try:
+            mentee = request.user.mentee_profile
+            connection = ConnectionRequest.objects.filter(
+                mentee=mentee,
+                mentor=mentor
+            ).first()
+            if connection:
+                connection_status = connection.status
+        except:
+            pass
+    
     context = {
         'mentor': mentor,
+        'connection_status': connection_status,
     }
     return render(request, 'mentors/mentor_detail.html', context)

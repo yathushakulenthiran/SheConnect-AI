@@ -530,3 +530,1098 @@ System check identified 2 issues (0 silenced).
 [09/Aug/2025 16:48:01] "GET /mentees/dashboard/ HTTP/1.1" 200 6478
 [09/Aug/2025 16:48:07] "GET /admin/login/ HTTP/1.1" 302 0
 [09/Aug/2025 16:48:07] "GET /admin/ HTTP/1.1" 200 21089
+/Users/yathushakulenthiran/Projects/sheconnect-mentorship/ai_support/views.py changed, reloading.
+Performing system checks...
+
+August 09, 2025 - 16:39:17
+Django version 5.2.5, using settings 'sheconnect_ai.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/5.2/howto/deployment/
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: settings.ACCOUNT_AUTHENTICATION_METHOD is deprecated, use: settings.ACCOUNT_LOGIN_METHODS = {'username', 'email'}
+?: settings.ACCOUNT_EMAIL_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+
+System check identified 2 issues (0 silenced).
+/Users/yathushakulenthiran/Projects/sheconnect-mentorship/ai_support/views.py changed, reloading.
+Performing system checks...
+
+August 09, 2025 - 16:53:53
+Django version 5.2.5, using settings 'sheconnect_ai.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/5.2/howto/deployment/
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: settings.ACCOUNT_AUTHENTICATION_METHOD is deprecated, use: settings.ACCOUNT_LOGIN_METHODS = {'email', 'username'}
+?: settings.ACCOUNT_EMAIL_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+
+System check identified 2 issues (0 silenced).
+[09/Aug/2025 16:57:13] "GET /mentees/register/ HTTP/1.1" 302 0
+[09/Aug/2025 16:57:13] "GET /mentees/dashboard/ HTTP/1.1" 200 6591
+Internal Server Error: /ai-support/matching/
+Traceback (most recent call last):
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/ai_support/views.py", line 59, in ai_matching
+    return render(request, 'ai_support/matching.html', context)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 228, in do_block
+    raise TemplateSyntaxError(
+        "'%s' tag with name '%s' appears more than once" % (bits[0], block_name)
+    )
+django.template.exceptions.TemplateSyntaxError: 'block' tag with name 'title' appears more than once
+[09/Aug/2025 16:57:22] "GET /ai-support/matching/ HTTP/1.1" 500 176543
+[09/Aug/2025 16:57:28] "GET /mentors/ HTTP/1.1" 200 16210
+Internal Server Error: /ai-support/matching/
+Traceback (most recent call last):
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/ai_support/views.py", line 59, in ai_matching
+    return render(request, 'ai_support/matching.html', context)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 228, in do_block
+    raise TemplateSyntaxError(
+        "'%s' tag with name '%s' appears more than once" % (bits[0], block_name)
+    )
+django.template.exceptions.TemplateSyntaxError: 'block' tag with name 'title' appears more than once
+[09/Aug/2025 16:57:31] "GET /ai-support/matching/ HTTP/1.1" 500 176543
+[09/Aug/2025 16:57:34] "GET /mentees/profile/ HTTP/1.1" 200 7791
+[09/Aug/2025 16:57:37] "POST /mentees/profile/ HTTP/1.1" 302 0
+[09/Aug/2025 16:57:37] "GET /mentees/dashboard/ HTTP/1.1" 200 6591
+Internal Server Error: /ai-support/matching/
+Traceback (most recent call last):
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/ai_support/views.py", line 59, in ai_matching
+    return render(request, 'ai_support/matching.html', context)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 228, in do_block
+    raise TemplateSyntaxError(
+        "'%s' tag with name '%s' appears more than once" % (bits[0], block_name)
+    )
+django.template.exceptions.TemplateSyntaxError: 'block' tag with name 'title' appears more than once
+[09/Aug/2025 16:57:39] "GET /ai-support/matching/ HTTP/1.1" 500 176543
+[10/Aug/2025 00:11:57] "GET / HTTP/1.1" 200 13393
+[10/Aug/2025 00:11:59] "GET /mentors/ HTTP/1.1" 200 16210
+[10/Aug/2025 00:12:25] "GET /mentors/ HTTP/1.1" 200 16210
+[10/Aug/2025 00:12:51] "GET /mentors/?search=&industry=Technology&business_stage=idea&availability= HTTP/1.1" 200 11279
+[10/Aug/2025 00:12:58] "GET /mentors/ HTTP/1.1" 200 16210
+[10/Aug/2025 00:14:25] "GET /mentors/?search=&industry=Technology&business_stage=established&availability=available HTTP/1.1" 200 11287
+[10/Aug/2025 00:14:31] "GET /mentors/ HTTP/1.1" 200 16210
+[10/Aug/2025 00:14:37] "GET /mentors/?search=&industry=Technology&business_stage=&availability= HTTP/1.1" 200 14055
+[10/Aug/2025 00:14:58] "GET /mentors/?search=&industry=Technology&business_stage=&availability=available HTTP/1.1" 200 14063
+[10/Aug/2025 00:15:39] "GET / HTTP/1.1" 200 13393
+[10/Aug/2025 00:15:42] "GET /admin/login/ HTTP/1.1" 302 0
+[10/Aug/2025 00:15:42] "GET /admin/ HTTP/1.1" 200 21089
+[10/Aug/2025 00:15:42] "GET /static/admin/css/base.css HTTP/1.1" 304 0
+[10/Aug/2025 00:15:42] "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+[10/Aug/2025 00:15:42] "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+[10/Aug/2025 00:15:42] "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+[10/Aug/2025 00:15:42] "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+[10/Aug/2025 00:15:42] "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+[10/Aug/2025 00:15:42] "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+[10/Aug/2025 00:15:42] "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+[10/Aug/2025 00:15:42] "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+[10/Aug/2025 00:15:50] "GET /mentors/ HTTP/1.1" 200 16210
+[10/Aug/2025 00:15:53] "GET /mentees/register/ HTTP/1.1" 302 0
+[10/Aug/2025 00:15:53] "GET /mentees/dashboard/ HTTP/1.1" 200 6591
+[10/Aug/2025 00:15:57] "GET /mentees/onboarding/ HTTP/1.1" 200 6655
+[10/Aug/2025 00:16:59] "POST /mentees/onboarding/ HTTP/1.1" 302 0
+[10/Aug/2025 00:16:59] "GET /mentees/dashboard/ HTTP/1.1" 200 6561
+[10/Aug/2025 00:17:07] "GET /mentees/profile/ HTTP/1.1" 200 7791
+[10/Aug/2025 00:17:29] "POST /mentees/profile/ HTTP/1.1" 302 0
+[10/Aug/2025 00:17:29] "GET /mentees/dashboard/ HTTP/1.1" 200 6561
+[10/Aug/2025 00:17:44] "GET /mentors/ HTTP/1.1" 200 16210
+[10/Aug/2025 00:17:49] "GET / HTTP/1.1" 200 13393
+[10/Aug/2025 00:17:54] "GET /mentees/register/ HTTP/1.1" 302 0
+[10/Aug/2025 00:17:54] "GET /mentees/dashboard/ HTTP/1.1" 200 6561
+Internal Server Error: /ai-support/matching/
+Traceback (most recent call last):
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/ai_support/views.py", line 59, in ai_matching
+    return render(request, 'ai_support/matching.html', context)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 228, in do_block
+    raise TemplateSyntaxError(
+        "'%s' tag with name '%s' appears more than once" % (bits[0], block_name)
+    )
+django.template.exceptions.TemplateSyntaxError: 'block' tag with name 'title' appears more than once
+[10/Aug/2025 00:17:58] "GET /ai-support/matching/ HTTP/1.1" 500 176543
+[10/Aug/2025 00:20:21] "GET /ai-support/matching/ HTTP/1.1" 200 6641
+[10/Aug/2025 00:20:26] "GET / HTTP/1.1" 200 13393
+[10/Aug/2025 00:20:30] "GET /mentees/register/ HTTP/1.1" 302 0
+[10/Aug/2025 00:20:30] "GET /mentees/dashboard/ HTTP/1.1" 200 6561
+[10/Aug/2025 00:20:36] "GET /mentors/ HTTP/1.1" 200 16210
+[10/Aug/2025 00:20:39] "GET / HTTP/1.1" 200 13393
+[10/Aug/2025 00:20:42] "GET /mentees/register/ HTTP/1.1" 302 0
+[10/Aug/2025 00:20:42] "GET /mentees/dashboard/ HTTP/1.1" 200 6561
+[10/Aug/2025 00:20:45] "GET /mentees/profile/ HTTP/1.1" 200 7791
+[10/Aug/2025 00:21:24] "POST /mentees/profile/ HTTP/1.1" 302 0
+[10/Aug/2025 00:21:24] "GET /mentees/dashboard/ HTTP/1.1" 200 6561
+[10/Aug/2025 00:21:31] "GET /ai-support/matching/ HTTP/1.1" 200 6639
+[10/Aug/2025 00:21:42] "GET /mentors/1/ HTTP/1.1" 200 7239
+[10/Aug/2025 00:22:15] "GET /mentors/2/ HTTP/1.1" 200 7219
+[10/Aug/2025 00:23:41] "GET /mentees/profile/ HTTP/1.1" 200 7808
+[10/Aug/2025 00:23:44] "POST /mentees/profile/ HTTP/1.1" 302 0
+[10/Aug/2025 00:23:44] "GET /mentees/dashboard/ HTTP/1.1" 200 6561
+/Users/yathushakulenthiran/Projects/sheconnect-mentorship/mentees/views.py changed, reloading.
+Performing system checks...
+
+August 09, 2025 - 16:55:58
+Django version 5.2.5, using settings 'sheconnect_ai.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/5.2/howto/deployment/
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: settings.ACCOUNT_AUTHENTICATION_METHOD is deprecated, use: settings.ACCOUNT_LOGIN_METHODS = {'username', 'email'}
+?: settings.ACCOUNT_EMAIL_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+
+System check identified 2 issues (0 silenced).
+/Users/yathushakulenthiran/Projects/sheconnect-mentorship/mentees/urls.py changed, reloading.
+Performing system checks...
+
+August 10, 2025 - 00:24:22
+Django version 5.2.5, using settings 'sheconnect_ai.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/5.2/howto/deployment/
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: settings.ACCOUNT_AUTHENTICATION_METHOD is deprecated, use: settings.ACCOUNT_LOGIN_METHODS = {'username', 'email'}
+?: settings.ACCOUNT_EMAIL_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+
+System check identified 2 issues (0 silenced).
+/Users/yathushakulenthiran/Projects/sheconnect-mentorship/mentors/views.py changed, reloading.
+Performing system checks...
+
+August 10, 2025 - 00:24:33
+Django version 5.2.5, using settings 'sheconnect_ai.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/5.2/howto/deployment/
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: settings.ACCOUNT_AUTHENTICATION_METHOD is deprecated, use: settings.ACCOUNT_LOGIN_METHODS = {'username', 'email'}
+?: settings.ACCOUNT_EMAIL_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+
+System check identified 2 issues (0 silenced).
+/Users/yathushakulenthiran/Projects/sheconnect-mentorship/mentees/views.py changed, reloading.
+Performing system checks...
+
+August 10, 2025 - 00:25:00
+Django version 5.2.5, using settings 'sheconnect_ai.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/5.2/howto/deployment/
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: settings.ACCOUNT_AUTHENTICATION_METHOD is deprecated, use: settings.ACCOUNT_LOGIN_METHODS = {'email', 'username'}
+?: settings.ACCOUNT_EMAIL_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+
+System check identified 2 issues (0 silenced).
+/Users/yathushakulenthiran/Projects/sheconnect-mentorship/mentees/views.py changed, reloading.
+Performing system checks...
+
+August 10, 2025 - 00:25:44
+Django version 5.2.5, using settings 'sheconnect_ai.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/5.2/howto/deployment/
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: settings.ACCOUNT_AUTHENTICATION_METHOD is deprecated, use: settings.ACCOUNT_LOGIN_METHODS = {'email', 'username'}
+?: settings.ACCOUNT_EMAIL_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+
+System check identified 2 issues (0 silenced).
+[10/Aug/2025 00:28:38] "GET /mentors/ HTTP/1.1" 200 16210
+[10/Aug/2025 00:28:42] "GET /mentors/1/ HTTP/1.1" 200 7551
+[10/Aug/2025 01:04:41] "GET /mentors/ HTTP/1.1" 200 16210
+[10/Aug/2025 01:04:48] "GET /ai-support/matching/ HTTP/1.1" 200 6639
+[10/Aug/2025 01:04:51] "GET /mentors/2/ HTTP/1.1" 200 7531
+[10/Aug/2025 01:05:18] "GET /mentors/1/ HTTP/1.1" 200 7551
+[10/Aug/2025 01:05:23] "GET /mentees/connect/1/ HTTP/1.1" 200 7726
+[10/Aug/2025 01:06:07] "POST /mentees/connect/1/ HTTP/1.1" 302 0
+[10/Aug/2025 01:06:07] "GET /mentees/connections/ HTTP/1.1" 200 8492
+[10/Aug/2025 01:06:31] "GET /admin/mentors/mentor/ HTTP/1.1" 200 26739
+[10/Aug/2025 01:06:31] "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+[10/Aug/2025 01:06:31] "GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+[10/Aug/2025 01:06:31] "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+[10/Aug/2025 01:06:31] "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+[10/Aug/2025 01:06:31] "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+[10/Aug/2025 01:06:31] "GET /static/admin/js/core.js HTTP/1.1" 304 0
+[10/Aug/2025 01:06:31] "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+[10/Aug/2025 01:06:31] "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+[10/Aug/2025 01:06:31] "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+[10/Aug/2025 01:06:31] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[10/Aug/2025 01:06:31] "GET /static/admin/img/icon-yes.svg HTTP/1.1" 304 0
+[10/Aug/2025 01:06:31] "GET /static/admin/img/search.svg HTTP/1.1" 304 0
+[10/Aug/2025 01:06:31] "GET /static/admin/js/filters.js HTTP/1.1" 304 0
+[10/Aug/2025 01:06:31] "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 304 0
+[10/Aug/2025 01:06:31] "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+[10/Aug/2025 01:06:31] "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 304 0
+[10/Aug/2025 01:06:40] "GET /admin/ai_services/message/ HTTP/1.1" 200 21025
+[10/Aug/2025 01:06:40] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[10/Aug/2025 01:06:42] "GET /admin/ai_services/conversation/ HTTP/1.1" 200 20999
+[10/Aug/2025 01:06:42] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[10/Aug/2025 01:06:43] "GET /admin/ai_services/aiservice/ HTTP/1.1" 200 21550
+[10/Aug/2025 01:06:43] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[10/Aug/2025 01:06:44] "GET /admin/ai_services/userserviceusage/ HTTP/1.1" 200 20733
+[10/Aug/2025 01:06:44] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[10/Aug/2025 01:06:47] "GET /admin/mentees/mentorshipsession/ HTTP/1.1" 200 21909
+[10/Aug/2025 01:06:47] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[10/Aug/2025 01:06:48] "GET /admin/ai_support/mentalhealthresource/ HTTP/1.1" 200 21652
+[10/Aug/2025 01:06:48] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[10/Aug/2025 01:06:49] "GET /admin/ai_support/chatmessage/ HTTP/1.1" 200 20995
+[10/Aug/2025 01:06:49] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[10/Aug/2025 01:06:50] "GET /admin/ai_support/aimatchingscore/ HTTP/1.1" 200 20917
+[10/Aug/2025 01:06:50] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[10/Aug/2025 01:06:52] "GET /admin/auth/group/ HTTP/1.1" 200 19488
+[10/Aug/2025 01:06:52] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[10/Aug/2025 01:06:54] "GET /admin/mentees/connectionrequest/ HTTP/1.1" 200 23337
+[10/Aug/2025 01:06:54] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[10/Aug/2025 01:07:04] "GET /admin/ai_support/chatmessage/ HTTP/1.1" 200 20995
+[10/Aug/2025 01:07:04] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[10/Aug/2025 01:07:05] "GET /admin/ai_support/mentalhealthresource/ HTTP/1.1" 200 21652
+[10/Aug/2025 01:07:05] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[10/Aug/2025 01:07:06] "GET /admin/ai_support/mentalhealthsession/ HTTP/1.1" 200 22930
+[10/Aug/2025 01:07:06] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[10/Aug/2025 01:07:07] "GET /admin/ai_support/aimatchingscore/ HTTP/1.1" 200 20917
+[10/Aug/2025 01:07:07] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[10/Aug/2025 01:07:14] "GET /admin/mentees/connectionrequest/ HTTP/1.1" 200 23337
+[10/Aug/2025 01:07:14] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[10/Aug/2025 01:07:18] "GET /admin/mentees/mentee/ HTTP/1.1" 200 24275
+[10/Aug/2025 01:07:18] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[10/Aug/2025 01:07:26] "GET /admin/mentees/mentorshipsession/ HTTP/1.1" 200 21909
+[10/Aug/2025 01:07:26] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[10/Aug/2025 01:07:45] "GET /admin/mentees/connectionrequest/ HTTP/1.1" 200 23337
+[10/Aug/2025 01:07:45] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[10/Aug/2025 01:07:56] "GET /admin/mentors/mentor/ HTTP/1.1" 200 26589
+[10/Aug/2025 01:07:56] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[10/Aug/2025 01:08:16] "GET /admin/sites/site/ HTTP/1.1" 200 21157
+[10/Aug/2025 01:08:16] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[10/Aug/2025 01:08:20] "GET /admin/ai_services/aiservice/ HTTP/1.1" 200 21550
+[10/Aug/2025 01:08:20] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[10/Aug/2025 01:08:21] "GET /admin/ai_services/conversation/ HTTP/1.1" 200 20999
+[10/Aug/2025 01:08:21] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[10/Aug/2025 01:08:25] "GET /admin/mentees/connectionrequest/ HTTP/1.1" 200 23337
+[10/Aug/2025 01:08:25] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[10/Aug/2025 01:08:31] "GET /admin/mentees/connectionrequest/?status__exact=accepted HTTP/1.1" 200 22072
+[10/Aug/2025 01:08:31] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[10/Aug/2025 01:08:36] "GET /mentees/connections/ HTTP/1.1" 200 8492
+[10/Aug/2025 01:08:42] "GET /mentees/connections/ HTTP/1.1" 200 8492
+[10/Aug/2025 01:08:43] "GET /mentees/connections/ HTTP/1.1" 200 8492
+[10/Aug/2025 01:08:43] "GET /mentees/connections/ HTTP/1.1" 200 8492
+[10/Aug/2025 01:08:43] "GET /mentees/connections/ HTTP/1.1" 200 8492
+[10/Aug/2025 01:08:44] "GET /mentees/connections/ HTTP/1.1" 200 8492
+[10/Aug/2025 01:09:05] "GET /ai-support/matching/ HTTP/1.1" 200 6639
+[10/Aug/2025 01:09:07] "GET /mentors/2/ HTTP/1.1" 200 7531
+[10/Aug/2025 01:09:12] "GET /mentors/1/ HTTP/1.1" 200 7473
+[10/Aug/2025 01:09:45] "GET /admin/mentees/mentee/ HTTP/1.1" 200 24275
+[10/Aug/2025 01:09:45] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[10/Aug/2025 01:09:48] "GET /admin/ai_support/mentalhealthsession/ HTTP/1.1" 200 22930
+[10/Aug/2025 01:09:48] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[10/Aug/2025 01:09:54] "GET /admin/mentees/connectionrequest/ HTTP/1.1" 200 23337
+[10/Aug/2025 01:09:54] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[10/Aug/2025 01:10:08] "GET /admin/mentees/mentee/ HTTP/1.1" 200 24275
+[10/Aug/2025 01:10:08] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+/Users/yathushakulenthiran/Projects/sheconnect-mentorship/ai_support/models.py changed, reloading.
+Performing system checks...
+
+August 10, 2025 - 00:27:57
+Django version 5.2.5, using settings 'sheconnect_ai.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/5.2/howto/deployment/
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: settings.ACCOUNT_AUTHENTICATION_METHOD is deprecated, use: settings.ACCOUNT_LOGIN_METHODS = {'email', 'username'}
+?: settings.ACCOUNT_EMAIL_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+
+System check identified 2 issues (0 silenced).
+/Users/yathushakulenthiran/Projects/sheconnect-mentorship/mentors/models.py changed, reloading.
+Performing system checks...
+
+August 10, 2025 - 01:25:52
+Django version 5.2.5, using settings 'sheconnect_ai.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/5.2/howto/deployment/
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+    ~~^^^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/core/management/commands/runserver.py", line 134, in inner_run
+    self.check(**check_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/core/management/base.py", line 492, in check
+    all_issues = checks.run_checks(
+        app_configs=app_configs,
+    ...<2 lines>...
+        databases=databases,
+    )
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/core/checks/registry.py", line 89, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/core/checks/urls.py", line 136, in check_custom_error_handlers
+    handler = resolver.resolve_error_handler(status_code)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/urls/resolvers.py", line 732, in resolve_error_handler
+    callback = getattr(self.urlconf_module, "handler%s" % view_type, None)
+                       ^^^^^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/urls/resolvers.py", line 711, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1026, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/sheconnect_ai/urls.py", line 22, in <module>
+    path('', include('core.urls')),
+             ~~~~~~~^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/urls/conf.py", line 39, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1026, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/core/urls.py", line 2, in <module>
+    from . import views
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/core/views.py", line 3, in <module>
+    from mentors.models import Mentor
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/mentors/models.py", line 6, in <module>
+    class Mentor(models.Model):
+    ...<46 lines>...
+            return f"{self.expertise} ({self.years_experience} years experience)"
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/db/models/base.py", line 136, in __new__
+    raise RuntimeError(
+    ...<3 lines>...
+    )
+RuntimeError: Model class mentors.models.Mentor doesn't declare an explicit app_label and isn't in an application in INSTALLED_APPS.
+/Users/yathushakulenthiran/Projects/sheconnect-mentorship/manage.py changed, reloading.
+Performing system checks...
+
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+    ~~^^^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/core/management/commands/runserver.py", line 134, in inner_run
+    self.check(**check_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/core/management/base.py", line 492, in check
+    all_issues = checks.run_checks(
+        app_configs=app_configs,
+    ...<2 lines>...
+        databases=databases,
+    )
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/core/checks/registry.py", line 89, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/core/checks/urls.py", line 136, in check_custom_error_handlers
+    handler = resolver.resolve_error_handler(status_code)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/urls/resolvers.py", line 732, in resolve_error_handler
+    callback = getattr(self.urlconf_module, "handler%s" % view_type, None)
+                       ^^^^^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/urls/resolvers.py", line 711, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1026, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/sheconnect_ai/urls.py", line 22, in <module>
+    path('', include('core.urls')),
+             ~~~~~~~^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/urls/conf.py", line 39, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1026, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/core/urls.py", line 2, in <module>
+    from . import views
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/core/views.py", line 3, in <module>
+    from mentors.models import Mentor
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/mentors/models.py", line 6, in <module>
+    class Mentor(models.Model):
+    ...<46 lines>...
+            return f"{self.expertise} ({self.years_experience} years experience)"
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/db/models/base.py", line 136, in __new__
+    raise RuntimeError(
+    ...<3 lines>...
+    )
+RuntimeError: Model class mentors.models.Mentor doesn't declare an explicit app_label and isn't in an application in INSTALLED_APPS.
+/Users/yathushakulenthiran/Projects/sheconnect-mentorship/manage.py changed, reloading.
+Performing system checks...
+
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+    ~~^^^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/core/management/commands/runserver.py", line 134, in inner_run
+    self.check(**check_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/core/management/base.py", line 492, in check
+    all_issues = checks.run_checks(
+        app_configs=app_configs,
+    ...<2 lines>...
+        databases=databases,
+    )
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/core/checks/registry.py", line 89, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/core/checks/urls.py", line 136, in check_custom_error_handlers
+    handler = resolver.resolve_error_handler(status_code)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/urls/resolvers.py", line 732, in resolve_error_handler
+    callback = getattr(self.urlconf_module, "handler%s" % view_type, None)
+                       ^^^^^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/urls/resolvers.py", line 711, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1026, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/sheconnect_ai/urls.py", line 22, in <module>
+    path('', include('core.urls')),
+             ~~~~~~~^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/urls/conf.py", line 39, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1026, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/core/urls.py", line 2, in <module>
+    from . import views
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/core/views.py", line 3, in <module>
+    from mentors.models import Mentor
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/mentors/models.py", line 6, in <module>
+    class Mentor(models.Model):
+    ...<46 lines>...
+            return f"{self.expertise} ({self.years_experience} years experience)"
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/db/models/base.py", line 136, in __new__
+    raise RuntimeError(
+    ...<3 lines>...
+    )
+RuntimeError: Model class mentors.models.Mentor doesn't declare an explicit app_label and isn't in an application in INSTALLED_APPS.
+/Users/yathushakulenthiran/Projects/sheconnect-mentorship/sheconnect_ai/settings.py changed, reloading.
+Performing system checks...
+
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+    ~~^^^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/core/management/commands/runserver.py", line 124, in inner_run
+    autoreload.raise_last_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/utils/autoreload.py", line 86, in raise_last_exception
+    raise _exception[1]
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/core/management/__init__.py", line 394, in execute
+    autoreload.check_errors(django.setup)()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+    ~~^^^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/apps/registry.py", line 124, in populate
+    app_config.ready()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/allauth/account/apps.py", line 19, in ready
+    raise ImproperlyConfigured(
+        f"{required_mw} must be added to settings.MIDDLEWARE"
+    )
+django.core.exceptions.ImproperlyConfigured: allauth.account.middleware.AccountMiddleware must be added to settings.MIDDLEWARE
+/Users/yathushakulenthiran/Projects/sheconnect-mentorship/sheconnect_ai/settings.py changed, reloading.
+Watching for file changes with StatReloader
+/Users/yathushakulenthiran/Projects/sheconnect-mentorship/sheconnect_ai/settings.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+August 10, 2025 - 01:33:28
+Django version 5.2.5, using settings 'sheconnect_ai.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/5.2/howto/deployment/
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: settings.ACCOUNT_AUTHENTICATION_METHOD is deprecated, use: settings.ACCOUNT_LOGIN_METHODS = {'email'}
+?: settings.ACCOUNT_EMAIL_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+
+System check identified 2 issues (0 silenced).
+/Users/yathushakulenthiran/Projects/sheconnect-mentorship/sheconnect_ai/settings.py changed, reloading.
+Performing system checks...
+
+August 10, 2025 - 01:33:38
+Django version 5.2.5, using settings 'sheconnect_ai.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/5.2/howto/deployment/
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: settings.ACCOUNT_AUTHENTICATION_METHOD is deprecated, use: settings.ACCOUNT_LOGIN_METHODS = {'email'}
+?: settings.ACCOUNT_EMAIL_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+
+System check identified 2 issues (0 silenced).
+/Users/yathushakulenthiran/Projects/sheconnect-mentorship/users/forms.py changed, reloading.
+Performing system checks...
+
+August 10, 2025 - 04:19:31
+Django version 5.2.5, using settings 'sheconnect_ai.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/5.2/howto/deployment/
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/core/checks/urls.py", line 136, in check_custom_error_handlers
+    handler = resolver.resolve_error_handler(status_code)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/urls/resolvers.py", line 732, in resolve_error_handler
+    callback = getattr(self.urlconf_module, "handler%s" % view_type, None)
+                       ^^^^^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/urls/resolvers.py", line 711, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1026, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/sheconnect_ai/urls.py", line 26, in <module>
+    path('users/', include('users.urls')),
+                   ~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/urls/conf.py", line 39, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1026, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/users/urls.py", line 2, in <module>
+    from . import views
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/users/views.py", line 11, in <module>
+    from .forms import SignupForm
+ImportError: cannot import name 'SignupForm' from 'users.forms' (/Users/yathushakulenthiran/Projects/sheconnect-mentorship/users/forms.py)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+    ~~^^^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/core/management/commands/runserver.py", line 134, in inner_run
+    self.check(**check_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/core/management/base.py", line 492, in check
+    all_issues = checks.run_checks(
+        app_configs=app_configs,
+    ...<2 lines>...
+        databases=databases,
+    )
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/core/checks/registry.py", line 89, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/core/checks/urls.py", line 138, in check_custom_error_handlers
+    path = getattr(resolver.urlconf_module, "handler%s" % status_code)
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/urls/resolvers.py", line 711, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1026, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/sheconnect_ai/urls.py", line 26, in <module>
+    path('users/', include('users.urls')),
+                   ~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/.venv/lib/python3.13/site-packages/django/urls/conf.py", line 39, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1026, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/users/urls.py", line 2, in <module>
+    from . import views
+  File "/Users/yathushakulenthiran/Projects/sheconnect-mentorship/users/views.py", line 11, in <module>
+    from .forms import SignupForm
+ImportError: cannot import name 'SignupForm' from 'users.forms' (/Users/yathushakulenthiran/Projects/sheconnect-mentorship/users/forms.py)
+/Users/yathushakulenthiran/Projects/sheconnect-mentorship/users/views.py changed, reloading.
+Performing system checks...
+
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: settings.ACCOUNT_AUTHENTICATION_METHOD is deprecated, use: settings.ACCOUNT_LOGIN_METHODS = {'email'}
+?: settings.ACCOUNT_EMAIL_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+
+System check identified 2 issues (0 silenced).
+/Users/yathushakulenthiran/Projects/sheconnect-mentorship/users/views.py changed, reloading.
+Performing system checks...
+
+August 10, 2025 - 04:19:51
+Django version 5.2.5, using settings 'sheconnect_ai.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/5.2/howto/deployment/
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: settings.ACCOUNT_AUTHENTICATION_METHOD is deprecated, use: settings.ACCOUNT_LOGIN_METHODS = {'email'}
+?: settings.ACCOUNT_EMAIL_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+
+System check identified 2 issues (0 silenced).
+/Users/yathushakulenthiran/Projects/sheconnect-mentorship/users/forms.py changed, reloading.
+Performing system checks...
+
+August 10, 2025 - 04:20:00
+Django version 5.2.5, using settings 'sheconnect_ai.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/5.2/howto/deployment/
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: settings.ACCOUNT_AUTHENTICATION_METHOD is deprecated, use: settings.ACCOUNT_LOGIN_METHODS = {'email'}
+?: settings.ACCOUNT_EMAIL_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+
+System check identified 2 issues (0 silenced).
+/Users/yathushakulenthiran/Projects/sheconnect-mentorship/users/views.py changed, reloading.
+Performing system checks...
+
+August 10, 2025 - 04:28:57
+Django version 5.2.5, using settings 'sheconnect_ai.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/5.2/howto/deployment/
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: settings.ACCOUNT_AUTHENTICATION_METHOD is deprecated, use: settings.ACCOUNT_LOGIN_METHODS = {'email'}
+?: settings.ACCOUNT_EMAIL_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+
+System check identified 2 issues (0 silenced).
+/Users/yathushakulenthiran/Projects/sheconnect-mentorship/users/views.py changed, reloading.
+Performing system checks...
+
+August 10, 2025 - 05:06:23
+Django version 5.2.5, using settings 'sheconnect_ai.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/5.2/howto/deployment/
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: settings.ACCOUNT_AUTHENTICATION_METHOD is deprecated, use: settings.ACCOUNT_LOGIN_METHODS = {'email'}
+?: settings.ACCOUNT_EMAIL_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+
+System check identified 2 issues (0 silenced).
+/Users/yathushakulenthiran/Projects/sheconnect-mentorship/users/views.py changed, reloading.
+Performing system checks...
+
+August 10, 2025 - 05:06:30
+Django version 5.2.5, using settings 'sheconnect_ai.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/5.2/howto/deployment/
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: settings.ACCOUNT_AUTHENTICATION_METHOD is deprecated, use: settings.ACCOUNT_LOGIN_METHODS = {'email'}
+?: settings.ACCOUNT_EMAIL_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+
+System check identified 2 issues (0 silenced).
+/Users/yathushakulenthiran/Projects/sheconnect-mentorship/users/urls.py changed, reloading.
+Performing system checks...
+
+August 10, 2025 - 05:09:47
+Django version 5.2.5, using settings 'sheconnect_ai.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/5.2/howto/deployment/
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: settings.ACCOUNT_AUTHENTICATION_METHOD is deprecated, use: settings.ACCOUNT_LOGIN_METHODS = {'email'}
+?: settings.ACCOUNT_EMAIL_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+
+System check identified 2 issues (0 silenced).
+/Users/yathushakulenthiran/Projects/sheconnect-mentorship/users/urls.py changed, reloading.
+Performing system checks...
+
+August 10, 2025 - 05:10:09
+Django version 5.2.5, using settings 'sheconnect_ai.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/5.2/howto/deployment/
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: settings.ACCOUNT_AUTHENTICATION_METHOD is deprecated, use: settings.ACCOUNT_LOGIN_METHODS = {'email'}
+?: settings.ACCOUNT_EMAIL_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+
+System check identified 2 issues (0 silenced).
+/Users/yathushakulenthiran/Projects/sheconnect-mentorship/ai_support/urls.py changed, reloading.
+Performing system checks...
+
+August 10, 2025 - 05:10:33
+Django version 5.2.5, using settings 'sheconnect_ai.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/5.2/howto/deployment/
+Fatal Python error: init_sys_streams: can't initialize sys standard streams
+Python runtime state: core initialized
+OSError: [Errno 9] Bad file descriptor
+
+Current thread 0x0000000102eb7d40 (most recent call first):
+  <no Python frame>

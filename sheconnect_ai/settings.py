@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'core',
     'users',
-    'ai_services',
     'mentors',
     'mentees',
     'ai_support',
@@ -150,18 +149,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-]
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-
-# Media files
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
-
-# Email (development)
-EMAIL_BACKEND = env("EMAIL_BACKEND", default='django.core.mail.backends.console.EmailBackend')
-DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL", default='no-reply@sheconnect.ai')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -171,13 +158,25 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Custom user model
 AUTH_USER_MODEL = 'users.User'
 
-# Sites / allauth
-SITE_ID = env.int("SITE_ID", default=1)
+# Email backend for development
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Authentication backends
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
-LOGIN_REDIRECT_URL = '/mentees/dashboard/'
+
+# Allauth settings
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
-ACCOUNT_EMAIL_VERIFICATION = 'optional'
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+
+# Static and media files
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'

@@ -63,3 +63,4 @@ class MentorUpdate(BaseModel):
     linkedin_profile: Optional[str] = None
     photo_url: Optional[str] = None
 
+

@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import MentalHealthResource, MentalHealthSession
+from mentees.models import Mentee
+from .services import top_matches
 
 
 @login_required
@@ -40,11 +42,18 @@ def mental_health_resources(request):
 @login_required
 def ai_matching(request):
     """AI-powered mentor matching"""
-    if request.method == 'POST':
-        # Handle matching request
-        pass
-    
+    try:
+        mentee = request.user.mentee_profile
+    except Mentee.DoesNotExist:
+        mentee = None
+
+    results = []
+    if mentee:
+        results = top_matches(mentee)
+
     context = {
         'title': 'AI Mentor Matching',
+        'results': results,
+        'mentee': mentee,
     }
     return render(request, 'ai_support/matching.html', context)

@@ -8,3 +8,4 @@ urlpatterns = [
     path('<int:mentor_id>/', views.mentor_detail, name='detail'),
 ]
 
+
